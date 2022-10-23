@@ -1,10 +1,14 @@
 ---
-title: "CLT problem"
-author: "Dr. J"
-date: "2022-10-22"
-output: html_document
+title: "CLT_WUP"
+author: "Your Name"
+output: 
+  html_document:
+    number_sections: true
+    toc: true
+    toc_depth: 5
+date: "`r Sys.Date()`"    
+    
 ---
-
 
 kkardashtemp  see code below
 
@@ -29,7 +33,7 @@ library(dplyr)
 my1000 <- Homers_data[sampleNumber, ]
 names(my1000)
 # Basic density
-p <- ggplot(my1000, aes(x=kkardashtemp)) + 
+p <- ggplot(my1000, aes(x=kkardashtemp,col=sex)) + 
   geom_density()
 p
 # Add mean line
@@ -46,7 +50,8 @@ x.avg <- apply(mdata,1,mean)
 my1000$k2 = x.avg
 
 p <- ggplot(my1000, aes(x=k2)) + 
-  geom_density() +
+  geom_density() 
+p
 
 # Add mean line
   geom_vline(aes(xintercept=mean(k2)),
@@ -54,7 +59,9 @@ p <- ggplot(my1000, aes(x=k2)) +
 print(paste('mean = ', mean(my1000$k2),' sd = ',sd(my1000$k2)))
 
 ```
+## We expect the sample mean to be close to population and the standev to get smaller by the ratio of one to the sample size. In this case 1/sqrt(2)
 
+### There are 3 peaks in the density plot. You pick two people you can get MM,MF.FM,or FF. these are all equally likey so the little peak on left is all the FF's while the little peak on the right is all the MM's so the big one in the middle is both the MF and FM in the same bag so-to-speak.  
 
 ```{r}
 numb = 4
@@ -64,7 +71,7 @@ x.avg <- apply(mdata,1,mean)
 my1000$k4 = x.avg
 
 
-p <- ggplot(my1000, aes(x=k4)) + 
+p <- ggplot(my1000, aes(x=k4),col=sex) + 
   geom_density() +
 
 # Add mean line
@@ -77,44 +84,5 @@ print(paste('mean = ', mean(my1000$k4),' sd = ',sd(my1000$k4)))
 
 ```
 
-```{r}
-numb = 9
-Hdata = Homers_data[sample(1:1000,size=numb*1000, replace=T),"kkardashtemp"]
-mdata  <-matrix(Hdata,nrow=1000,ncol=numb)
-x.avg <- apply(mdata,1,mean)
-my1000$k9 = x.avg
-
-
-p <- ggplot(my1000, aes(x=k9)) + 
-  geom_density() +
-
-# Add mean line
- geom_vline(aes(xintercept=mean(k9)),
-            color="blue", linetype="dashed", size=1)
-p + ggtitle("n = 9") +
-  xlab("temperature") + ylab(" density")
-
-print(paste('mean = ', mean(my1000$k9),' sd = ',sd(my1000$k9)))
-```
-
-```{r}
-numb = 36
-Hdata = Homers_data[sample(1:1000,size=numb*1000, replace=T),"kkardashtemp"]
-mdata  <-matrix(Hdata,nrow=1000,ncol=numb)
-x.avg <- apply(mdata,1,mean)
-my1000$k36 = x.avg
-
-
-p <- ggplot(my1000, aes(x=k36)) + 
-  geom_density() +
-
-# Add mean line
- geom_vline(aes(xintercept=mean(k36)),
-            color="blue", linetype="dashed", size=1)
-p + ggtitle("n = 36") +
-  xlab("temperature") + ylab(" density")
-
-print(paste('mean = ', mean(my1000$k36),' sd = ',sd(my1000$k36)))
-```
-
+### In this case the stdev was cut in half because the sample size was four. This is what the central limit theorem says. There are also 5 peaks. They go from FFFF,to FFFM, to FFMM to FMMM and finally MMMM.
 
