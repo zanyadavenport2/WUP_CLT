@@ -54,7 +54,7 @@ p <- ggplot(my1000, aes(x=k2)) +
 p
 
 # Add mean line
-  geom_vline(aes(xintercept=mean(k2)),
+  geom_vline(aes(xintercept=mean(k4)),
             color="blue", linetype="dashed", size=1)
 print(paste('mean = ', mean(my1000$k2),' sd = ',sd(my1000$k2)))
 
@@ -64,23 +64,23 @@ print(paste('mean = ', mean(my1000$k2),' sd = ',sd(my1000$k2)))
 ### There are 3 peaks in the density plot. You pick two people you can get MM,MF.FM,or FF. these are all equally likey so the little peak on left is all the FF's while the little peak on the right is all the MM's so the big one in the middle is both the MF and FM in the same bag so-to-speak.  
 
 ```{r}
-numb = 4
+numb = 9
 Hdata = Homers_data[sample(1:1000,size=numb*1000, replace=T),"kkardashtemp"]
 mdata  <-matrix(Hdata,nrow=1000,ncol=numb)
 x.avg <- apply(mdata,1,mean)
-my1000$k4 = x.avg
+my1000$k9 = x.avg
 
 
-p <- ggplot(my1000, aes(x=k4),col=sex) + 
+p <- ggplot(my1000, aes(x=k9),col=sex) + 
   geom_density() +
 
 # Add mean line
- geom_vline(aes(xintercept=mean(k4)),
+ geom_vline(aes(xintercept=mean(k9)),
             color="blue", linetype="dashed", size=1)
-p + ggtitle("n = 4") +
+p + ggtitle("n = 9") +
   xlab("temperature") + ylab(" density")
 
-print(paste('mean = ', mean(my1000$k4),' sd = ',sd(my1000$k4)))
+print(paste('mean = ', mean(my1000$k9),' sd = ',sd(my1000$k9)))
 
 ```
 
