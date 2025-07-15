@@ -106,7 +106,29 @@ p + ggtitle("n = 16") +
 print(paste('mean = ', mean(my1000$k16),' sd = ',sd(my1000$k16)))
 ```
 
-Based off my observation when you knit it it gives a different number every time that only slightly differs from the one before. It also gives us the value of the standard deviation. It was approximately 41.73 the first time. Then we ran it again as k9 and got approximately 14.00 . I expect the number of k16 to be half of k9 and it was close this number was approximately 10.50.
+The standard deviation was approximately 41.73 the first time. Then we ran it again as k9 and got approximately 14.00 . I expect the number of k16 to be half of k9 and it was close this number was approximately 10.50.
+
+```{r}
+numb = 25
+Hdata = Homers_data[sample(1:1000,size=numb*1000, replace=T),"kkardashtemp"]
+mdata  <-matrix(Hdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+my1000$k25 = x.avg
+
+
+p <- ggplot(my1000, aes(x=k25),col=sex) + 
+  geom_density() + 
+
+# Add mean line
+ geom_vline(aes(xintercept=mean(k25)),
+            color="blue", linetype="dashed", size=1)
+p + ggtitle("n = 25") +
+  xlab("temperature") + ylab(" density")
+
+print(paste('mean = ', mean(my1000$k25),' sd = ',sd(my1000$k25)))
+```
+The standard dev was approximately 41.73 the first time. Then we ran it again as k9 and got approximately 10.50 . I expect the number of k16 to be half of k9 and it was close this number was approximately 8.50. This number is of by about 3 from half of 10.5.
+
 
 ### In this case the stdev was cut in  half because the sample size was four. This is what the central limit theorem says. There are also 5 peaks. They go from FFFF,to FFFM, to FFMM to FMMM and finally MMMM.
 
