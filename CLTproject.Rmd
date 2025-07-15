@@ -81,11 +81,12 @@ p + ggtitle("n = 9") +
   xlab("temperature") + ylab(" density")
 
 print(paste('mean = ', mean(my1000$k9),' sd = ',sd(my1000$k9)))
-
 ```
 
-From my observation when you change the number and kint it it gives a diffrent graph. It also gives us the value of the standard deviation. It was 41.7267551709583 the first time and I expect this number to be half of that. It is less than half it is 14.0238939987023. 
+From my observation when you change the number and knit it it gives a different number every time that only slightly differs from the one before. It also gives us the value of the standard deviation. It was approximately 41.73 the first time. Then we ran it again as k2 and got aproximetly 29.90 . I expect the number of k9 to be half of k2 and it was close this number was approximately 14.00.
 
-### In this case the stdev was cut in half because the sample size was four. This is what the central limit theorem says. There are also 5 peaks. They go from FFFF,to FFFM, to FFMM to FMMM and finally MMMM.
+
+
+### In this case the stdev was cut in  half because the sample size was four. This is what the central limit theorem says. There are also 5 peaks. They go from FFFF,to FFFM, to FFMM to FMMM and finally MMMM.
 
 # Now finish by adding blocks with numb being 9, then 16, 25, and 36. be sure to mention how the standard deviation progresses as the sample size changes,
