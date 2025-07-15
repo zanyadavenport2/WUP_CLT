@@ -59,9 +59,7 @@ p
 print(paste('mean = ', mean(my1000$k2),' sd = ',sd(my1000$k2)))
 
 ```
-## We expect the sample mean to be close to population and the standev to get smaller by the ratio of one to the sample size. In this case 1/sqrt(2)
 
-### There are 3 peaks in the density plot. You pick two people you can get MM,MF.FM,or FF. these are all equally likey so the little peak on left is all the FF's while the little peak on the right is all the MM's so the big one in the middle is both the MF and FM in the same bag so-to-speak.  
 
 ```{r}
 numb = 9
@@ -152,6 +150,4 @@ print(paste('mean = ', mean(my1000$k36),' sd = ',sd(my1000$k36)))
 
 The standard dev was approximately 41.73 the first time. Then we ran it again as k25 and got approximately 8.50 . I expect the number of k36 to be half of k25 and it was close this number was approximately 6.72 . This number is of by about 2 from half of 8.50.
 
-### In this case the stdev was cut in  half because the sample size was four. This is what the central limit theorem says. There are also 5 peaks. They go from FFFF,to FFFM, to FFMM to FMMM and finally MMMM.
-
-# Now finish by adding blocks with numb being 9, then 16, 25, and 36. be sure to mention how the standard deviation progresses as the sample size changes,
+When you look at the number we started to and the number we ended with they vary drastically. When you change the sample size you can see that the numbers change based off sample size and every time you knit the assignment. This happens because we keep changing the sample size to get smaller but its still picking random number to fit in the sample size based off the orignal data. We see that there is not always 1/sqrt() change in the data every time we change the sample size.
